@@ -94,8 +94,8 @@ export enum PopupType {
   TestNotifications = 'TestNotifications',
   PullRequestComment = 'PullRequestComment',
   UnknownAuthors = 'UnknownAuthors',
-  ConfirmRepoRulesBypass = 'ConfirmRepoRulesBypass',
   TestIcons = 'TestIcons',
+  ConfirmCommitFilteredChanges = 'ConfirmCommitFilteredChanges',
 }
 
 interface IBasePopup {
@@ -422,13 +422,12 @@ export type PopupDetail =
       onCommit: () => void
     }
   | {
-      type: PopupType.ConfirmRepoRulesBypass
-      repository: GitHubRepository
-      branch: string
-      onConfirm: () => void
+      type: PopupType.TestIcons
     }
   | {
-      type: PopupType.TestIcons
+      type: PopupType.ConfirmCommitFilteredChanges
+      onCommitAnyway: () => void
+      onClearFilter: () => void
     }
 
 export type Popup = IBasePopup & PopupDetail
